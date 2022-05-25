@@ -10,11 +10,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Map4Weak">
         <activity
+            android:name=".mypage"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MYPAGE"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TipOff"
+            android:exported="false"
+            android:label="@string/title_activity_tipoff"
+            android:theme="@style/Theme.Map4Weak.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.TIPOFF"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
