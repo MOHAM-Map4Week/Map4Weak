@@ -11,17 +11,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:layout_marginTop="30dp"
+            android:padding="15dp"
+            android:textSize="18dp"
+            android:textColor="#66BB89"
             android:text="장소명"/>
 
         <EditText
             android:id="@+id/title_et"
-            android:background="#eeeeee"
+            android:background="@drawable/border_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
-            android:padding="10dp"
+            android:padding="18dp"
             android:hint="장소명을 입력하세요."
+            android:textSize="15dp"
             />
 
     <LinearLayout
@@ -32,43 +36,53 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="22dp"
+            android:padding="20dp"
+            android:textColor="#66BB89"
+            android:textSize="18dp"
             android:text="위치"/>
 
         <EditText
             android:id="@+id/location"
-            android:padding="10dp"
-            android:background="#eeeeee"
+            android:padding="18dp"
+            android:background="@drawable/border_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="주소를 입력하세요."
+            android:textSize="15dp"
             />
     </LinearLayout>
 
 
     <EditText
         android:id="@+id/location_spe"
-        android:padding="10dp"
-        android:background="#eeeeee"
+        android:padding="18dp"
+        android:background="@drawable/border_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="상세주소"/>
+        android:layout_marginBottom="30dp"
+        android:hint="상세주소"
+        android:textSize="15dp"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="수정사항"/>
+        android:padding="18dp"
+        android:text="수정사항"
+        android:textColor="#66BB89"
+        android:textSize="18dp"
+        />
 
 
     <EditText
         android:id="@+id/content_et"
-        android:padding="20dp"
+        android:padding="18dp"
         android:layout_marginBottom="100dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#eeeeee"
-        android:hint="내용을 입력하세요."
+        android:background="@drawable/border_bottom"
+        android:hint="수정사항을 입력해 주세요."
+        android:textSize="15dp"
         />
 
     <Button
