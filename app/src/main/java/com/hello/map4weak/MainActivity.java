@@ -46,32 +46,17 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
         mMapView = new MapView(MainActivity.this);
-        MapPoint mapPoint = MapPoint.mapPointWithGeoCoord(36.62974678334059, 127.45777318097677);
-        //위도와 경도를 하나의 변수로 지정해주는 메서드입니다.
 
         RelativeLayout mapViewContainer = (RelativeLayout) findViewById(R.id.map_view);
-
         mapViewContainer.addView(mMapView);
 
-        //mMapView.setDaumMapApiKey(MapApiConst.DAUM_MAPS_ANDROID_APP_API_KEY);
 
-        mMapView.setCurrentLocationEventListener(this);
-
-        if (!checkLocationServicesStatus()) {
-
-            showDialogForLocationServiceSetting();
-        }else {
-
-            checkRunTimePermission();
-        }
-
-
-
-
+        ///////////지도 마커 부분
+        MapPoint mapPoint = MapPoint.mapPointWithGeoCoord(36.62974678334059, 127.45777318097677);
+        //위도와 경도를 하나의 변수로 지정해주는 메서드입니다.
         MapPOIItem marker = new MapPOIItem();
         marker.setItemName("충북대학교"); //마커위에 나올 이름
         marker.setTag(0); //마커의 번호를 지정합니다.
@@ -79,9 +64,16 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
         marker.setMarkerType(MapPOIItem.MarkerType.BluePin);// 기본으로 제공하는 BluePin 마커 모양.
         marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);// 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
         mMapView.addPOIItem(marker); //mapView에 설정한 marker을 적용시킵니다.
+        //////////////////
 
 
+        mMapView.setCurrentLocationEventListener(this);
+        if (!checkLocationServicesStatus()) {
 
+            showDialogForLocationServiceSetting();
+        }else {
+            checkRunTimePermission();
+        }
     }
 
     @Override
