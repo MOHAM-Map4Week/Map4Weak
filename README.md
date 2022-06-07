@@ -35,5 +35,6 @@
 2. build.gradle : app 수정
 3. URLConnector.java 생성
 4. buildinfoData.java 생성
+(참고:https://github.com/MOHAM-Map4Week/Map4Weak/commit/3b4c00b1229928afb193a577e5db86e60b5f5540)
 
 2022.06.01(성연) : 검색창 생성 (진행중)
