@@ -4,6 +4,8 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.provider.Settings;
 import android.view.ViewGroup;
 import android.view.View;
@@ -29,6 +31,18 @@ import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapReverseGeoCoder;
 import net.daum.mf.map.api.MapView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity implements MapView.CurrentLocationEventListener, MapReverseGeoCoder.ReverseGeoCodingResultListener {
 
     private static final String LOG_TAG = "MainActivity";
@@ -40,39 +54,99 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
     private static final int PERMISSIONS_REQUEST_CODE = 100;
     String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION};
 
-
-
+    private String test;
+    private URLConnector task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 데이터베이스 연결
+        test = "https://yewon-txuxl.run.goorm.io/yewon/connect.php";
+        task = new URLConnector(test);
+
+        task.start();
+
+        try {
+            task.join();
+            System.out.println("waiting . . . for result");
+        }
+        catch(InterruptedException e) {
+
+        }
+        String result = task.getResult();
+        // System.out.println(result);
+
+
         mMapView = new MapView(MainActivity.this);
 
         RelativeLayout mapViewContainer = (RelativeLayout) findViewById(R.id.map_view);
         mapViewContainer.addView(mMapView);
 
+        try {
+            ///////////지도 마커 부분
+            MapPoint mapPoint = MapPoint.mapPointWithGeoCoord(36.62974678334059, 127.45777318097677);
+            //위도와 경도를 하나의 변수로 지정해주는 메서드입니다.
+            MapPOIItem marker = new MapPOIItem();
+            marker.setItemName("충북대학교"); //마커위에 나올 이름
+            marker.setTag(0); //마커의 번호를 지정합니다.
+            marker.setMapPoint(mapPoint);
+            marker.setMarkerType(MapPOIItem.MarkerType.BluePin);// 기본으로 제공하는 BluePin 마커 모양.
+            marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);// 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+            mMapView.addPOIItem(marker); //mapView에 설정한 marker을 적용시킵니다.
+            //////////////////
 
-        ///////////지도 마커 부분
-        MapPoint mapPoint = MapPoint.mapPointWithGeoCoord(36.62974678334059, 127.45777318097677);
-        //위도와 경도를 하나의 변수로 지정해주는 메서드입니다.
-        MapPOIItem marker = new MapPOIItem();
-        marker.setItemName("충북대학교"); //마커위에 나올 이름
-        marker.setTag(0); //마커의 번호를 지정합니다.
-        marker.setMapPoint(mapPoint);
-        marker.setMarkerType(MapPOIItem.MarkerType.BluePin);// 기본으로 제공하는 BluePin 마커 모양.
-        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);// 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
-        mMapView.addPOIItem(marker); //mapView에 설정한 marker을 적용시킵니다.
-        //////////////////
+            mMapView.setCurrentLocationEventListener(this);
+            if (!checkLocationServicesStatus()) {
 
+                showDialogForLocationServiceSetting();
+            }else {
+                checkRunTimePermission();
+            }
+            JSONObject root = new JSONObject(result);
 
-        mMapView.setCurrentLocationEventListener(this);
-        if (!checkLocationServicesStatus()) {
+            JSONArray ja = root.getJSONArray("buildinfo");
 
-            showDialogForLocationServiceSetting();
-        }else {
-            checkRunTimePermission();
+            for (int i = 0; i < ja.length(); i++) {
+                JSONObject jo = ja.getJSONObject(i);
+
+                int build_id = jo.getInt("build_id");
+                String build_name = jo.getString("build_name");
+                String x = jo.getString("x");
+                String y = jo.getString("y");
+                String thumbnail_img = jo.getString("thumbnail_img");
+                int bicycle_parking = jo.getInt("bicycle_parking");
+                int disabled_parking = jo.getInt("disabled_parking");
+                int rest_area = jo.getInt("rest_area");
+                int wheel_accessible = jo.getInt("wheel_accessible");
+                int stairs = jo.getInt("stairs");
+                int elevator = jo.getInt("elevator");
+                int disabled_toilet = jo.getInt("disabled_toilet");
+                int coffee_machine = jo.getInt("coffee_machine");
+                int atm_machine = jo.getInt("atm_machine");
+                int information_desk = jo.getInt("information_desk");
+                int shop = jo.getInt("shop");
+                int smoking = jo.getInt("smoking");
+                int kickboard = jo.getInt("kickboard");
+                int umbrella = jo.getInt("umbrella");
+                int filtration = jo.getInt("filtration");
+                int cafe = jo.getInt("cafe");
+                int copy_machine = jo.getInt("copy_machine");
+
+                // System.out.println(build_name);
+
+                MapPoint mapPoints = MapPoint.mapPointWithGeoCoord(Double.parseDouble(x), Double.parseDouble(y));
+                MapPOIItem markers = new MapPOIItem();
+                markers.setItemName(build_name); //마커위에 나올 이름
+                markers.setTag(0); //마커의 번호를 지정합니다.
+                markers.setMapPoint(mapPoints);
+                markers.setMarkerType(MapPOIItem.MarkerType.BluePin);// 기본으로 제공하는 BluePin 마커 모양.
+                markers.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);// 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+                mMapView.addPOIItem(markers); //mapView에 설정한 marker을 적용시킵니다.
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 
