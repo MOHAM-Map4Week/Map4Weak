@@ -44,12 +44,8 @@ import java.net.URL;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements MapView.CurrentLocationEventListener, MapReverseGeoCoder.ReverseGeoCodingResultListener {
-
     private static final String LOG_TAG = "MainActivity";
-
     private MapView mMapView;
-
-
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
     private static final int PERMISSIONS_REQUEST_CODE = 100;
     String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION};
@@ -73,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
             System.out.println("waiting . . . for result");
         }
         catch(InterruptedException e) {
-
         }
         String result = task.getResult();
         // System.out.println(result);
