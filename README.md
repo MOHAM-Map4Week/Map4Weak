@@ -9,7 +9,8 @@
 3. activity_main.xml 수정
 4. app/jniLibs 생성
 5. res/xml 생성
-6. build.gradle : app 수정
+6. build.gradle : app 수정 
+<br>
 (참고 : https://github.com/Yeons0110/Map4Weak/commit/411467794b7e80d79e1dd8b71e211b6ab0ec8bb8)
 
 
@@ -34,7 +35,8 @@
 1. mainActivity.java 수정
 2. build.gradle : app 수정
 3. URLConnector.java 생성
-4. buildinfoData.java 생성
+4. buildinfoData.java 생성 
+<br>
 (참고:https://github.com/MOHAM-Map4Week/Map4Weak/commit/3b4c00b1229928afb193a577e5db86e60b5f5540)
 
 2022.06.01(성연) : 검색창 생성 (진행중)
