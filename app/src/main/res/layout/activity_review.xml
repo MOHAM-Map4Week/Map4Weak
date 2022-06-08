@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".mypage">
+    tools:context=".Review">
 
     <ImageView
         android:id="@+id/profile"
@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:paddingTop="150dp"
-        android:text="      지도 수정 제보 내역이 없습니다.\n 알고 있는 유용한 정보를 공유해 주세요."
+        android:text="      작성한 후기가 없습니다.\n 방문한 장소에 후기를 남겨주세요."
         android:textSize="15dp" />
 
     <TextView
@@ -94,7 +94,7 @@
         android:layout_marginTop="20dp"
         android:onClick="movetext"
         android:linksClickable="true"
-        android:text="글 작성하기" />
+        android:text="후기 작성하기" />
 
 
 </LinearLayout>

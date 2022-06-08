@@ -9,26 +9,34 @@
 3. activity_main.xml 수정
 4. app/jniLibs 생성
 5. res/xml 생성
-6. build.gradle : app 수정
+6. build.gradle : app 수정 
+<br>
 (참고 : https://github.com/Yeons0110/Map4Weak/commit/411467794b7e80d79e1dd8b71e211b6ab0ec8bb8)
 
 
-2022.05.31(성연) :  지도마커추가성공
+2022.05.31(성연) :  지도마커추가
 김성연:
 
 1. mainActivity.java 수정
 
 
-2022.06.01(성연) :  지도마커현재위치추가성공
+2022.06.01(성연) :  지도마커현재위치추가
 김성연:
 
 1. mainActivity.java 수정
-2. 
 
-2022.06.01(성연) :  지도마커검색시뜨게하기추가(진행중)
+2022.06.01(성연) :  지도마커검색시뜨게하기추가
 김성연:
 
 1. mainActivity.java 수정
        ![image](https://user-images.githubusercontent.com/74572293/171294869-8e406d8f-f78d-48b6-84e4-84938aa3deac.png)
 
-예원아 앞으로 연결할 때 참고할 위치야 여기 마커 코드 부분에서만 실행하면 되어용~
+2022.06.07(예원) : 마커 DB 연결 성공
+1. mainActivity.java 수정
+2. build.gradle : app 수정
+3. URLConnector.java 생성
+4. buildinfoData.java 생성 
+<br>
+(참고:https://github.com/MOHAM-Map4Week/Map4Weak/commit/3b4c00b1229928afb193a577e5db86e60b5f5540)
+
+2022.06.07(성연) : 검색창 생성 (진행중)

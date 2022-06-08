@@ -7,29 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-public class mypage extends AppCompatActivity {
+public class Review extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mypage);
-
-        TextView movetext = findViewById(R.id.announce);
+        setContentView(R.layout.activity_review);
 
         TextView movestar = findViewById(R.id.star);
 
         TextView movepencil = findViewById(R.id.pencil);
-
-
-        movetext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),TipOff.class);
-                startActivity(intent);
-            }
-        });
 
         movestar.setOnClickListener(new View.OnClickListener() {
             @Override
