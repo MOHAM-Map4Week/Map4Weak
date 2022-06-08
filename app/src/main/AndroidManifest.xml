@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.hello.map4weak">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
 
     <application
         android:allowBackup="true"
@@ -41,6 +44,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.hello.map4weak.RegisterActivity"></activity>
+        <activity android:name="com.hello.map4weak.LoginActivity"
+            tools:ignore="DuplicateActivity"></activity>
+        <activity android:name="com.hello.map4weak.Map"></activity>
+
         <meta-data android:name="com.kakao.sdk.AppKey" android:value="d544a1de6d61a33f8128ac56b3620faf"/>
     </application>
 
