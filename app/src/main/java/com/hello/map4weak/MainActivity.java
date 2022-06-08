@@ -166,23 +166,23 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
         MenuInflater inflater=getMenuInflater();
         inflater.inflate(R.menu.search_menu,menu);
         mSearch=menu.findItem(R.id.search);
-
-        //메뉴 아이콘 클릭했을 시 확장, 취소했을 시 축소
-        mSearch.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
-            @Override
-            public boolean onMenuItemActionExpand(MenuItem item) {
-                TextView text=(TextView)findViewById(R.id.txtstatus);
-                text.setText("현재 상태 : 확장됨");
-                return true;
-            }
-
-            @Override
-            public boolean onMenuItemActionCollapse(MenuItem item) {
-                TextView text=(TextView)findViewById(R.id.txtstatus);
-                text.setText("현재 상태 : 축소됨");
-                return true;
-            }
-        });
+//
+//        //메뉴 아이콘 클릭했을 시 확장, 취소했을 시 축소
+//        mSearch.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+//            @Override
+//            public boolean onMenuItemActionExpand(MenuItem item) {
+//                TextView text=(TextView)findViewById(R.id.txtstatus);
+//                text.setText("현재 상태 : 확장됨");
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean onMenuItemActionCollapse(MenuItem item) {
+//                TextView text=(TextView)findViewById(R.id.txtstatus);
+//                text.setText("현재 상태 : 축소됨");
+//                return true;
+//            }
+//        });
 
 
         //menuItem을 이용해서 SearchView 변수 생성
@@ -210,18 +210,18 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
         });
         return true;
     }
-
-    // 검색 확장,축소를 버튼으로 생성
-    public void mOnClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnexpand:
-                mSearch.expandActionView();
-                break;
-            case R.id.btncollapse:
-                mSearch.collapseActionView();
-                break;
-        }
-    }
+//
+//    // 검색 확장,축소를 버튼으로 생성
+//    public void mOnClick(View v) {
+//        switch (v.getId()) {
+//            case R.id.btnexpand:
+//                mSearch.expandActionView();
+//                break;
+//            case R.id.btncollapse:
+//                mSearch.collapseActionView();
+//                break;
+//        }
+//    }
 
     @Override
     protected void onDestroy() {
