@@ -18,11 +18,31 @@ public class mypage extends AppCompatActivity {
 
         TextView movetext = findViewById(R.id.announce);
 
+        TextView movestar = findViewById(R.id.star);
+
+        TextView movepencil = findViewById(R.id.pencil);
+
+
         movetext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),TipOff.class);
                 startActivity(intent);
+            }
+        });
+
+        movestar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),Review.class);
+                startActivity(intent);
+            }
+        });
+
+        movepencil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), mypage.class);
             }
         });
     }
