@@ -39,9 +39,7 @@
 <br>
 (참고:https://github.com/MOHAM-Map4Week/Map4Weak/commit/3b4c00b1229928afb193a577e5db86e60b5f5540)
 
-2022.06.07(성연) : 검색창 생성 (진행중)
-
-2022.06.08(서영)
+2022.06.08(서영) : 로그인 창 생성
 1. LoginActivity.java
 2. LoginRequest.java
 3. RegisterActivity.java
@@ -51,4 +49,11 @@
 7. acitivity_login.xml
 8. activity_register.xml
 추가
+
+
+2022.06.07(성연) : 검색창 생성
+1. MainActivity.java 수정
+2. activity_main.xml 수정
+3. search_menu.xml 생성
+
 
