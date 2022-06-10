@@ -58,7 +58,7 @@ import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements MapView.CurrentLocationEventListener, MapReverseGeoCoder.ReverseGeoCodingResultListener, NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements MapView.CurrentLocationEventListener, MapReverseGeoCoder.ReverseGeoCodingResultListener {
     private static final String LOG_TAG = "MainActivity";
     private MapView mMapView;
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
     DrawerLayout drawerLayout;
     NavigationView navigationView;
 
+    private NavigationView nav;
 
     private String test;
     private URLConnector task;
@@ -177,6 +178,28 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+
+        nav = findViewById(R.id.navigation_view);
+
+        nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id=item.getItemId();
+                Log.d(TAG, "onNavigationItemSelected: id"+id);
+                if(id==R.id.item_info){
+                    Intent intent=new Intent(MainActivity.this, Review.class);
+                    startActivity(intent);
+                }
+                else if(id==R.id.item_report){
+                    Intent intent=new Intent(MainActivity.this, mypage.class);
+                    startActivity(intent);
+                }
+
+                return true;
+            }
+        });
     }
 
     @Override
@@ -197,47 +220,6 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
         } else {
             super.onBackPressed();
         }
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.item_info) {
-
-            // Handle the camera action
-            Button movestar = (Button) findViewById(R.id.item_info);
-
-            movestar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(),Review.class);
-                    startActivity(intent);
-                }
-            });
-
-        } else if (id == R.id.item_report) {
-
-
-            Button pencil = (Button) findViewById(R.id.item_report);
-
-            pencil.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(),TipOff.class);
-                    startActivity(intent);
-                }
-            });
-
-
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 
 
