@@ -23,6 +23,17 @@ public class mypage extends AppCompatActivity {
 
         ImageView movepencil = findViewById(R.id.pencil);
 
+        ImageView movesetting = findViewById(R.id.setting);
+
+        ImageView back = findViewById(R.id.goback);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         movetext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +55,14 @@ public class mypage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), mypage.class);
+            }
+        });
+
+        movesetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),setting.class);
+                startActivity(intent);
             }
         });
     }
