@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Review extends AppCompatActivity {
@@ -14,9 +15,9 @@ public class Review extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
 
-        TextView movestar = findViewById(R.id.star);
+        ImageView movestar = findViewById(R.id.star);
 
-        TextView movepencil = findViewById(R.id.pencil);
+        ImageView movepencil = findViewById(R.id.pencil);
 
         movestar.setOnClickListener(new View.OnClickListener() {
             @Override
