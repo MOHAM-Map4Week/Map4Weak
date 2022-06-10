@@ -52,8 +52,9 @@ public class LoginActivity extends AppCompatActivity {
                             boolean success=jasonObject.getBoolean("success");
                             if (success) {//회원등록 성공한 경우
                                 String userID = jasonObject.getString("userID");
+                                String userName = jasonObject.getString("userName");
                                 String userPass = jasonObject.getString("userPassword");
-                                Toast.makeText(getApplicationContext(), "어서오세요, " + userID + "님!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "어서오세요, " + userName + "님!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 intent.putExtra("log", "User");
                                 intent.putExtra("userID", userID);
