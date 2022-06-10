@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Map4Weak"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".setting"
+            android:exported="false" />
+        <activity
             android:name=".Start"
             android:exported="true"
             android:theme="@style/Theme.AppCompat">
@@ -32,17 +35,15 @@
             android:exported="false" />
         <activity
             android:name=".mypage"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".TipOff"
             android:exported="false"
             android:label="@string/title_activity_tipoff"
-            android:theme="@style/Theme.Map4Weak.NoActionBar"></activity>
-
+            android:theme="@style/Theme.Map4Weak.NoActionBar" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat"></activity>
-
+            android:theme="@style/Theme.AppCompat" />
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".LoginActivity"

@@ -196,6 +196,10 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
                     Intent intent=new Intent(MainActivity.this, mypage.class);
                     startActivity(intent);
                 }
+                else if(id==R.id.item_setting){
+                    Intent intent=new Intent(MainActivity.this, setting.class);
+                    startActivity(intent);
+                }
 
                 return true;
             }

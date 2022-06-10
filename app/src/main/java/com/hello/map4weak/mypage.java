@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -18,9 +19,9 @@ public class mypage extends AppCompatActivity {
 
         TextView movetext = findViewById(R.id.announce);
 
-        TextView movestar = findViewById(R.id.star);
+        ImageView movestar = findViewById(R.id.star);
 
-        TextView movepencil = findViewById(R.id.pencil);
+        ImageView movepencil = findViewById(R.id.pencil);
 
 
         movetext.setOnClickListener(new View.OnClickListener() {

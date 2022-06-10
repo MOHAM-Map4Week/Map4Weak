@@ -9,5 +9,9 @@
         android:id="@+id/item_report"
         android:icon="@drawable/pencil"
         android:title="제보" />
+    <item
+        android:id="@+id/item_setting"
+        android:icon="@drawable/setting"
+        android:title="설정" />
 
 </menu>
