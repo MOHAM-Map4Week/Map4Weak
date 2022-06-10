@@ -19,7 +19,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".Start"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,7 +38,11 @@
             android:exported="false"
             android:label="@string/title_activity_tipoff"
             android:theme="@style/Theme.Map4Weak.NoActionBar"></activity>
-        <activity android:name=".MainActivity"></activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat"></activity>
+
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".LoginActivity"

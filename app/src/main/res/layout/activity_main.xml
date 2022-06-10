@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/white"
+    android:id="@+id/drawer_layout">
 
-    <TextView
-        android:id="@+id/txtsearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="검색식 : "
-        android:textSize="25dp"/>
 
-    <TextView
-        android:id="@+id/txtresult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="검색결과"
-        android:textSize="25dp"/>
 
 <!--    <TextView-->
 <!--        android:id="@+id/txtstatus"-->
@@ -48,4 +39,48 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Tool bar -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.Map4Weak">
+
+            <!-- search bar 부분 -->
+
+            <TextView
+                android:id="@+id/txtsearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="검색식 : "
+                android:textSize="25dp"/>
+
+            <TextView
+                android:id="@+id/txtresult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="검색결과"
+                android:textSize="25dp"/>
+
+            <!-- search bar 부분 끝 -->
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </RelativeLayout>
+
+<!--    Menu bar-->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/navi_header"
+        android:theme="@style/Theme.Map4Weak"
+        app:menu="@menu/navi_menu" />
+
+</androidx.drawerlayout.widget.DrawerLayout>
