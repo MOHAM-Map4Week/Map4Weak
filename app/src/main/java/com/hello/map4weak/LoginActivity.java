@@ -1,13 +1,13 @@
 package com.hello.map4weak;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {//회원가입 버튼을 클릭시 수행
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -53,36 +53,28 @@ public class LoginActivity extends AppCompatActivity {
                             if (success) {//회원등록 성공한 경우
                                 String userID = jasonObject.getString("userID");
                                 String userPass = jasonObject.getString("userPassword");
-                                Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginActivity.this, Map.class);
+                                Toast.makeText(getApplicationContext(), "어서오세요, " + userID + "님!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 intent.putExtra("log", "User");
                                 intent.putExtra("userID", userID);
                                 startActivity(intent);
-
-                                //Intent intent = new Intent(LoginActivity.this, Map.class);
-                                //startActivity(intent);
                             }
 
 
                             else{//회원등록 실패한 경우
-                                Toast.makeText(getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "로그인 정보를 다시 확인해 주세요.", Toast.LENGTH_SHORT).show();
                                 return;
 
                             }
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        //Intent intent = new Intent(LoginActivity.this, Map.class);
-                        //startActivity(intent);
                     }
                 };
-                com.hello.map4weak.LoginRequest loginRequest=new com.hello.map4weak.LoginRequest(userID,userPass,responseListener);
+                LoginRequest loginRequest=new LoginRequest(userID,userPass,responseListener);
                 RequestQueue queue= Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
             }
         });
     }
-
-
 }
