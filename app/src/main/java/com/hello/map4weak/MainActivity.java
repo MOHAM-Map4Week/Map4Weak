@@ -5,6 +5,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.ClipData;
 import android.os.AsyncTask;
 import android.provider.Settings;
 import android.view.ViewGroup;
@@ -17,12 +18,16 @@ import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 
 import android.util.Log;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -51,13 +56,19 @@ import android.view.View;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements MapView.CurrentLocationEventListener, MapReverseGeoCoder.ReverseGeoCodingResultListener {
+import com.google.android.material.navigation.NavigationView;
+
+public class MainActivity extends AppCompatActivity implements MapView.CurrentLocationEventListener, MapReverseGeoCoder.ReverseGeoCodingResultListener, NavigationView.OnNavigationItemSelectedListener {
     private static final String LOG_TAG = "MainActivity";
     private MapView mMapView;
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
     private static final int PERMISSIONS_REQUEST_CODE = 100;
     String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION};
     MenuItem mSearch;
+
+    Toolbar toolbar;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
 
 
     private String test;
@@ -66,7 +77,20 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); // 왼쪽 상단 버튼 만들기
+        getSupportActionBar().setHomeAsUpIndicator(android.R.drawable.ic_menu_sort_by_size); //왼쪽 상단 버튼 아이콘 지정
+
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        navigationView = (NavigationView)findViewById(R.id.navigation_view);
+
+
+
 
         // 데이터베이스 연결
         test = "https://yewon-txuxl.run.goorm.io/yewon/connect.php";
@@ -155,6 +179,66 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ // 왼쪽 상단 버튼 눌렀을 때
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() { //뒤로가기 했을 때
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.item_info) {
+
+            // Handle the camera action
+            Button movestar = (Button) findViewById(R.id.item_info);
+
+            movestar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(),Review.class);
+                    startActivity(intent);
+                }
+            });
+
+        } else if (id == R.id.item_report) {
+
+
+            Button pencil = (Button) findViewById(R.id.item_report);
+
+            pencil.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(),TipOff.class);
+                    startActivity(intent);
+                }
+            });
+
+
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 
 
     //메뉴 생성하는 onCreateOptionsMenu
@@ -191,23 +275,30 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
         sv.setSubmitButtonEnabled(true);
 
         //SearchView의 검색 이벤트
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
-            //검색버튼을 눌렀을 경우
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                TextView text = (TextView)findViewById(R.id.txtresult);
-                text.setText(query + "를 검색합니다.");
-                return true;
-            }
-            //텍스트가 바뀔때마다 호출
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                TextView text = (TextView)findViewById(R.id.txtsearch);
-                text.setText("검색식 : "+newText);
-                return true;
-            }
-        });
+//        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//
+//            //검색버튼을 눌렀을 경우
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                TextView text;
+//                text = (TextView)findViewById(R.id.txtresult);
+////                text.setText(query + "를 검색합니다.");
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String s) {
+//                return false;
+//            }
+//            //텍스트가 바뀔때마다 호출
+////            @Override
+////            public boolean onQueryTextChange(String newText) {
+////                TextView text;
+////                text = (TextView)findViewById(R.id.txtsearch);
+////                text.setText("검색식 : " + newText);
+////                return true;
+////            }
+//        });
         return true;
     }
 //
