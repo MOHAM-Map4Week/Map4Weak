@@ -51,9 +51,19 @@
 추가
 
 
-2022.06.07(성연) : 검색창 생성
+2022.06.08(성연) : 검색창 생성
 1. MainActivity.java 수정
 2. activity_main.xml 수정
 3. search_menu.xml 생성
 
-
+2022. 6. 10. (예원) : 로그인 회원가입 기능 구현
+1. LoginActivity.java 수정
+2. LoginRequest.java 수정
+3. RegisterActivity.java 수정
+4. RegisterRequest.java 수정
+5. ValidateRequest.java 수정
+6. activity_login.xml 수정
+7. activity_register.xml 수정
+8. AndroidManifest.xml 수정
+9. Start.java - 시작 버튼 클릭 시 로그인 페이지로 이어지도록
+10. 전체적으로 데이터베이스 서버 링크 수정
