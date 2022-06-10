@@ -106,3 +106,19 @@
 6. search_menu.xml 수정
 7. styles.xml 수정
 8. themes.xml 수정
+
+2022.06.10(지인) : 메뉴의 서브메뉴 클릭 시 이동
+1. MainActivity.java 수정 
+2. activity_main.xml 수정
+3. styles.xml 수정
+
+
+2022.06.11(지인): 메뉴에 설정페이지 추가
+1. AndroidManifest.xml 수정
+2. setting.java 추가
+3. activity_setting.xml 추가
+4. Review.java 수정
+5. mypage.java 수정
+6. activity_review.xml 수정
+7. activity_mypage.xml 수정
+8. navi_menu.xml 수정
