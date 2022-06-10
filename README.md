@@ -115,10 +115,18 @@
 
 2022.06.11(지인): 메뉴에 설정페이지 추가
 1. AndroidManifest.xml 수정
-2. setting.java 추가
+2. setting.java 추가 - 로그아웃 및 회원탈퇴 기능 생성
 3. activity_setting.xml 추가
 4. Review.java 수정
 5. mypage.java 수정
 6. activity_review.xml 수정
 7. activity_mypage.xml 수정
 8. navi_menu.xml 수정
+
+2022.06.11(지인): 마이페이지 최종 수정
+1. 뒤로가기 버튼 생성  (모든 mypage 관련 파일에 코드 추가)
+2. 마이페이지 UI 수정  (activity_mypage.xml)
+3. 글 등록 코드 추가  (TipOff.java)
+4. 글 등록할 때 마이페이지 UI 추가  (Update.xml, activity_update.java)
+5. 후기 페이지 UI 수정  (activity_review.xml)
+6. 박스 테두리 속성 및 기본 색상(파란색) 추가  (border_all.xml, color.xml)
