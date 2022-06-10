@@ -56,7 +56,7 @@
 2. activity_main.xml 수정
 3. search_menu.xml 생성
 
-2022. 6. 10. (예원) : 로그인 회원가입 기능 구현
+2022.06.10(예원) : 로그인 회원가입 기능 구현
 1. LoginActivity.java 수정
 2. LoginRequest.java 수정
 3. RegisterActivity.java 수정
