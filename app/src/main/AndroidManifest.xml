@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Map4Weak"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Update"
+            android:exported="false" />
+        <activity
             android:name=".setting"
             android:exported="false" />
         <activity

@@ -22,6 +22,16 @@ public class setting extends AppCompatActivity {
 
         TextView movenone = findViewById(R.id.withdrawal);
 
+        ImageView back = findViewById(R.id.goback);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), mypage.class);
+                startActivity(intent);
+            }
+        });
+
         moveout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,10 +89,6 @@ public class setting extends AppCompatActivity {
 
             }
         });
-    }
-
-    void showButtonAlertDialog(){
-
     }
 
 }

@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="500dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
@@ -119,13 +119,66 @@
         android:layout_marginBottom="20dp"
         android:background="#CCCBCB"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:paddingLeft="30dp"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:text="작성한 글 목록" />
+
+    <LinearLayout
+        android:layout_width="310dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="40dp"
+        android:paddingLeft="35dp"
+        android:orientation="vertical"
+        android:background="@drawable/border_all"
+        android:elevation="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="학연산"
+            android:textColor="@color/black"
+            android:textSize="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="20dp"
+                android:onClick="detail"
+                android:linksClickable="true"
+                android:text="상세보기"
+                android:textSize="10dp"/>
+
+            <Button
+                android:id="@+id/delete"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:onClick="delete"
+                android:linksClickable="true"
+                android:text="삭제하기"
+                android:textSize="10dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:paddingTop="150dp"
-        android:text="      지도 수정 제보 내역이 없습니다.\n 알고 있는 유용한 정보를 공유해 주세요."
+        android:paddingTop="100dp"
+        android:text="알고 있는 유용한 정보를 공유해 주세요."
         android:textSize="15dp" />
 
     <TextView

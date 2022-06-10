@@ -8,10 +8,18 @@
     tools:context=".mypage">
 
     <ImageView
+        android:id="@+id/goback"
+        android:layout_marginTop="30dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="12dp"
+        android:src="@drawable/back"/>
+
+    <ImageView
         android:id="@+id/profile"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="200dp"
         android:layout_gravity="center"
         android:alpha="0.7"
         android:src="@drawable/profile" />
