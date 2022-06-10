@@ -52,19 +52,19 @@
 
             <!-- search bar 부분 -->
 
-            <TextView
-                android:id="@+id/txtsearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="검색식 : "
-                android:textSize="25dp"/>
+<!--            <TextView-->
+<!--                android:id="@+id/txtsearch"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="검색식 : "-->
+<!--                android:textSize="25dp"/>-->
 
-            <TextView
-                android:id="@+id/txtresult"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="검색결과"
-                android:textSize="25dp"/>
+<!--            <TextView-->
+<!--                android:id="@+id/txtresult"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="검색결과"-->
+<!--                android:textSize="25dp"/>-->
 
             <!-- search bar 부분 끝 -->
 
