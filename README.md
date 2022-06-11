@@ -130,3 +130,8 @@
 4. 글 등록할 때 마이페이지 UI 추가  (Update.xml, activity_update.java)
 5. 후기 페이지 UI 수정  (activity_review.xml)
 6. 박스 테두리 속성 및 기본 색상(파란색) 추가  (border_all.xml, color.xml)
+
+2022.06.11(예원): 상세 정보 창 최종 수정
+1. bottomSheetActivity.java 분리
+2. MainActivity.java 수정
+3. bottom_sheet.xml 수정
