@@ -3,8 +3,8 @@ package com.hello.map4weak;
 public class buildinfoData {
     int build_id;
     String build_name;
-    String x;
-    String y;
+    double x;
+    double y;
     String thumbnail_img;
     int bicycle_parking;
     int disabled_parking;
@@ -24,6 +24,31 @@ public class buildinfoData {
     int cafe;
     int copy_machine;
 
+    public buildinfoData(int build_id , String build_name, double x, double y, String thumbnail_img, int bicycle_parking, int disabled_parking, int rest_area, int wheel_accessible, int stairs, int elevator, int disabled_toilet, int coffee_machine, int atm_machine, int information_desk, int shop, int smoking, int kickboard, int umbrella, int filtration, int cafe, int copy_machine) {
+        this.build_id = build_id;
+        this.build_name = build_name;
+        this.x = x;
+        this.y = y;
+        this.thumbnail_img = thumbnail_img;
+        this.bicycle_parking = bicycle_parking;
+        this.disabled_parking = disabled_parking;
+        this.rest_area = rest_area;
+        this.wheel_accessible = wheel_accessible;
+        this.stairs = stairs;
+        this.elevator = elevator;
+        this.disabled_toilet = disabled_toilet;
+        this.coffee_machine = coffee_machine;
+        this.atm_machine = atm_machine;
+        this.information_desk = information_desk;
+        this.shop = shop;
+        this.smoking = smoking;
+        this.kickboard = kickboard;
+        this.umbrella = umbrella;
+        this.filtration = filtration;
+        this.cafe = cafe;
+        this.copy_machine = copy_machine;
+    }
+
     public int getBuild_id() {
         return build_id;
     }
@@ -40,19 +65,19 @@ public class buildinfoData {
         this.build_name = build_name;
     }
 
-    public String getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(String x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public String getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(String y) {
+    public void setY(double y) {
         this.y = y;
     }
 
