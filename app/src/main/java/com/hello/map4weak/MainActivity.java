@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.ClipData;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.provider.Settings;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
 import android.Manifest;
@@ -56,6 +58,7 @@ import android.view.View;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements MapView.CurrentLocationEventListener, MapReverseGeoCoder.ReverseGeoCodingResultListener {
@@ -71,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
     NavigationView navigationView;
 
     private NavigationView nav;
+
+    BottomSheetDialog bottomSheetDialog;
 
     private String test;
     private URLConnector task;
@@ -94,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
 
 
         // 데이터베이스 연결
-        test = "https://yewon-txuxl.run.goorm.io/yewon/connect.php";
+        test = "https://yewon-txuxl.run.goorm.io/map4weak/buildInfo.php";
         task = new URLConnector(test);
 
         task.start();
@@ -169,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
                 MapPoint mapPoints = MapPoint.mapPointWithGeoCoord(Double.parseDouble(x), Double.parseDouble(y));
                 MapPOIItem markers = new MapPOIItem();
                 markers.setItemName(build_name); //마커위에 나올 이름
-                markers.setTag(0); //마커의 번호를 지정합니다.
+                markers.setTag(i); //마커의 번호를 지정합니다.
                 markers.setMapPoint(mapPoints);
                 markers.setMarkerType(MapPOIItem.MarkerType.BluePin);// 기본으로 제공하는 BluePin 마커 모양.
                 markers.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);// 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
@@ -179,6 +184,10 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
             e.printStackTrace();
         }
 
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.bottom_sheet, null, false);
+        bottomSheetDialog = new BottomSheetDialog(this);
+        bottomSheetDialog.setContentView(view);
 
         nav = findViewById(R.id.navigation_view);
 
@@ -261,30 +270,30 @@ public class MainActivity extends AppCompatActivity implements MapView.CurrentLo
         sv.setSubmitButtonEnabled(true);
 
         //SearchView의 검색 이벤트
-//        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//
-//            //검색버튼을 눌렀을 경우
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            //검색버튼을 눌렀을 경우
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                mMapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(36.62511022182587, 127.45718407449348), 1, true);
+                bottomSheetDialog.show();
+                Toast.makeText(getApplicationContext(), "검색 결과입니다.", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+            //텍스트가 바뀔때마다 호출
 //            @Override
-//            public boolean onQueryTextSubmit(String query) {
+//            public boolean onQueryTextChange(String newText) {
 //                TextView text;
-//                text = (TextView)findViewById(R.id.txtresult);
-////                text.setText(query + "를 검색합니다.");
+//                text = (TextView)findViewById(R.id.txtsearch);
+//                text.setText("검색식 : " + newText);
 //                return true;
 //            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String s) {
-//                return false;
-//            }
-//            //텍스트가 바뀔때마다 호출
-////            @Override
-////            public boolean onQueryTextChange(String newText) {
-////                TextView text;
-////                text = (TextView)findViewById(R.id.txtsearch);
-////                text.setText("검색식 : " + newText);
-////                return true;
-////            }
-//        });
+        });
         return true;
     }
 //
